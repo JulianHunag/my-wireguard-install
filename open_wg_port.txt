@@ -1,0 +1,1 @@
+ufw enable && ufw allow 52822/tcp && ufw reload && ufw status verbose
