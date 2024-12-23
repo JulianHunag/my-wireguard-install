@@ -355,7 +355,7 @@ Install options (optional):
 
   --auto                         auto install WireGuard using default or custom options
   --serveraddr [DNS name or IP]  server address, must be a fully qualified domain name (FQDN) or an IPv4 address
-  --port [number]                port for WireGuard (1-65535, default: 52822)
+  --port [number]                port for WireGuard (1-65535, default: 36997)
   --clientname [client name]     name for the first WireGuard client (default: client)
   --dns1 [DNS server IP]         primary DNS server for first client (default: Google Public DNS)
   --dns2 [DNS server IP]         secondary DNS server for first client
@@ -506,7 +506,7 @@ show_config() {
 			printf '%s' "Server IP: "
 			[ -n "$public_ip" ] && printf '%s\n' "$public_ip" || printf '%s\n' "$ip"
 		fi
-		[ -n "$server_port" ] && port_text="$server_port" || port_text=52822
+		[ -n "$server_port" ] && port_text="$server_port" || port_text=36997
 		[ -n "$first_client_name" ] && client_text="$client" || client_text=client
 		if [ -n "$dns1" ] && [ -n "$dns2" ]; then
 			dns_text="$dns1, $dns2"
@@ -532,14 +532,14 @@ select_port() {
 	if [ "$auto" = 0 ]; then
 		echo
 		echo "Which port should WireGuard listen to?"
-		read -rp "Port [52822]: " port
+		read -rp "Port [36997]: " port
 		until [[ -z "$port" || "$port" =~ ^[0-9]+$ && "$port" -le 65535 ]]; do
 			echo "$port: invalid port."
-			read -rp "Port [52822]: " port
+			read -rp "Port [36997]: " port
 		done
-		[[ -z "$port" ]] && port=52822
+		[[ -z "$port" ]] && port=36997
 	else
-		[ -n "$server_port" ] && port="$server_port" || port=52822
+		[ -n "$server_port" ] && port="$server_port" || port=36997
 	fi
 }
 
